@@ -7,7 +7,7 @@ class BasicTemplateAlgorithm(QCAlgorithm):
         self.reb = 1
     # Number of stocks to pass CoarseSelection process
         self.num_coarse = 250
-    # Number of stocks to long/short
+    # Number of stocks 
         self.num_fine = 5
         self.symbols = None
 
@@ -63,7 +63,7 @@ class BasicTemplateAlgorithm(QCAlgorithm):
         
         stock_dict = {}
         
-        # assign a score to each stock, you can also change the rule of scoring here.
+        # assign a score to each stock
         for i,ele in enumerate(sortedByfactor1):
             rank1 = i
             rank2 = sortedByfactor2.index(ele)
@@ -75,7 +75,7 @@ class BasicTemplateAlgorithm(QCAlgorithm):
         self.sorted_stock = sorted(stock_dict.items(), key=lambda d:d[1],reverse=False)
         sorted_symbol = [x[0] for x in self.sorted_stock]
 
-        # sotre the top stocks into the long_list and the bottom ones into the short_list
+        # store the top stocks into the long
         self.long = [x.Symbol for x in sorted_symbol[:self.num_fine]]
         return self.long
 
